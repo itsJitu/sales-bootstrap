@@ -317,7 +317,7 @@ function Quotations() {
 
           
           <p 
-            style={{ color: " rgb(24, 138, 169)", cursor: "pointer" }} 
+            style={{ color: " rgb(24, 138, 169)"}} 
             onClick={addNewProduct}
             className="add-products-link"
           > 
