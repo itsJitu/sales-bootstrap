@@ -35,31 +35,8 @@ function First() {
           {showDropdown && (
             <div className="dropdown">
               <ul style={{ listStyle: "none", paddingLeft: 20 }}>
-                <li
-                  className={
-                    activeItem === "stock"
-                      ? "dropdown-item active"
-                      : "dropdown-item"
-                  }
-                  onClick={() => handleItemClick("stock")}
-                >
-                  <Link to="/" className="link">
-                    
-                  </Link>
-                </li>
                 
-                {/* <li
-                  className={
-                    activeItem === "movement"
-                      ? "dropdown-item active"
-                      : "dropdown-item"
-                  }
-                  onClick={() => handleItemClick("movement")}
-                >
-                  <Link to="/salesOrder" className="link">
-                    All Sales
-                  </Link>
-                </li> */}
+
 
                 <li
                   className={

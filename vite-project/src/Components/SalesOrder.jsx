@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./SalesOrder.css";
 
-function SaleesOrder() {
+function SalesOrder() {
   
   const [produtsData] = useState([
     {
