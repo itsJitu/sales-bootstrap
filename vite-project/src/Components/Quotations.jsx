@@ -51,16 +51,7 @@ function Quotations() {
 
      // Add new product
      const addNewProduct = () => {
-       const newProduct = {
-         id: Date.now(),
-         products: "New Product",
-         title: "Product Description",
-         quantity: 1,
-         price: 0,
-         tax: 0,
-         discount: 0
-       };
-       setProductsData([...produtsData, newProduct]);
+       // Disabled: do nothing when '+ Add products' is clicked
      };
 
      // Update product data

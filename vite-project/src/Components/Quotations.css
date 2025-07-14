@@ -228,6 +228,12 @@
   color: #007AFF !important;
   font-weight: 500;
   margin-top: 10px;
+  text-decoration: none;
+  cursor: default;
+}
+.add-products-link:hover {
+  text-decoration: none;
+  cursor: default;
 }
 
 

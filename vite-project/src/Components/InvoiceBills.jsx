@@ -181,11 +181,6 @@ function Invoice() {
             </div>
           </div>
 
-          {/* Add products */}
-          <div className="add-products">
-            <span> Add Products </span>
-          </div>
-
           {/* table div */}
           <div className="db-table">
             <table className="te">
@@ -250,7 +245,8 @@ function Invoice() {
             </table>
           </div>
 
-          <p style={{ color: " rgb(24, 138, 169)" }}> + Add products</p>
+          {/* Add products */}
+          <p style={{ color: "#007AFF" }}> + Add products</p>
 
           {/* Notes */}
           <div>
