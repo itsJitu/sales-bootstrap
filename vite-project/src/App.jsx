@@ -6,6 +6,9 @@ import First from './Components/First';
 import SalesOrder from './Components/SalesOrder';
 import AllSales from './Components/AllSales';
 import Quotations from './Components/Quotations';
+import Customer from './Components/Customer';
+import SalesReport from './Components/Report';
+import InvoicesBills from './Components/InvoiceBills';
 
 import './App.css'
 

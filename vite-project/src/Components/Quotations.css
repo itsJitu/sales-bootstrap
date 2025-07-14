@@ -102,6 +102,7 @@
 .te {
   border-collapse: collapse;
   width: 100%;
+  border: none;
 }
 
 .tr-head {
@@ -122,6 +123,7 @@
 
 /* Table body */
 .te tbody tr {
+  border: none;
   border-bottom: 1px solid #eee;
   transition: background-color 0.2s;
 }
@@ -163,25 +165,51 @@
 }
 
 .product-name-input {
-  color: rgb(0, 122, 255);
+  border: none;
+  background: transparent;
   font-weight: 500;
+  color: rgb(0, 122, 255);
   max-width: 150px;
+  font-size: 14px;
+  padding: 0;
+}
+.product-name-input:focus {
+  outline: none;
+  border-bottom: 1.5px solid #007aff;
+  background: transparent;
 }
 
 .product-desc-input {
+  border: none;
+  background: transparent;
   color: gray;
   font-size: 13px;
   max-width: 150px;
+  padding: 0;
+}
+.product-desc-input:focus {
+  outline: none;
+  border-bottom: 1.5px solid #007aff;
+  background: transparent;
 }
 
-.quantity-input {
-  max-width: 80px;
-}
-
+.quantity-input,
 .price-input,
 .tax-input,
 .discount-input {
+  border: none;
+  background: transparent;
   max-width: 100px;
+  padding: 0;
+  font-size: 14px;
+}
+.quantity-input:focus,
+.price-input:focus,
+.tax-input:focus,
+.discount-input:focus {
+  outline: none;
+  border-bottom: 1.5px solid #007aff;
+  background: transparent;
 }
 
 .product-name-input:focus,
@@ -197,18 +225,11 @@
 
 /* Add products link */
 .add-products-link {
-  color: rgb(24, 138, 169);
-  cursor: pointer;
+  color: #007AFF !important;
   font-weight: 500;
   margin-top: 10px;
-  display: inline-block;
-  transition: color 0.3s ease;
 }
 
-.add-products-link:hover {
-  color: rgb(0, 100, 200);
-  text-decoration: underline;
-}
 
 /* Notes section */
 .notes {
@@ -282,10 +303,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #f8f9fa;
   border-radius: 5px;
   font-weight: bold;
   font-size: 18px;
+  background: none !important;
 }
 
 .total-dis span:first-child {
@@ -293,7 +314,7 @@
 }
 
 .total-dis span:last-child {
-  color: rgb(0, 122, 255);
+  color: inherit;
   font-size: 20px;
 }
 
@@ -308,20 +329,24 @@
 }
 
 .save-btn {
-  color: rgb(24, 138, 169);
+  color: #007AFF;
+  background: none;
   border-radius: 5px;
-  border: 1px solid rgb(24, 138, 169);
+  border: 1px solid #007AFF;
   padding: 10px 20px;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
-  background: none;
   cursor: pointer;
 }
-
 .save-btn:hover:not(:disabled) {
-  background-color: rgb(24, 138, 169);
-  color: white;
+  background-color: #007AFF;
+  border-color: #007AFF;
+  color: #fff;
+}
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .send-btn {
@@ -357,6 +382,7 @@
     flex-direction: column;
     gap: 10px;
     text-align: center;
+    background: none !important;
   }
   
   .table-cont {
