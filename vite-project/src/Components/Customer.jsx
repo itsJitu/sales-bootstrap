@@ -78,14 +78,19 @@ function Customer() {
   // Pagination logic
   const itemsPerPage = 7;
   const totalPages = 3;
-  const paginated = mockCustomers.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const paginated = mockCustomers.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   return (
     <div className="customer-main">
       <div className="customer-header">
         <span>Customer Lists</span>
         <button className="create-order-btn">
-          <span style={{ fontSize: 18, fontWeight: "bold", marginRight: 6 }}>+</span>
+          <span style={{ fontSize: 18, fontWeight: "bold", marginRight: 6 }}>
+            +
+          </span>
           Create Order
         </button>
       </div>
@@ -93,12 +98,20 @@ function Customer() {
         <select className="customer-select">
           <option>Aman Kumar - Rajendra Chowk</option>
         </select>
-        <select className="customer-days" value={dateFilter} onChange={e => setDateFilter(e.target.value)}>
+        <select
+          className="customer-days"
+          value={dateFilter}
+          onChange={(e) => setDateFilter(e.target.value)}
+        >
           <option>Last 7 Days</option>
           <option>Last 30 Days</option>
           <option>Last 90 Days</option>
         </select>
-        <select className="customer-status" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
+        <select
+          className="customer-status"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
           <option>Completed</option>
           <option>Pending</option>
           <option>All Status</option>
@@ -133,30 +146,48 @@ function Customer() {
                 <td>$ {c.total}/-</td>
                 <td>{c.due === "--" ? "--" : `$ ${c.due}/-`}</td>
                 <td>
-                  <button className="action-btn"><IoIosPrint /></button>
-                  <button className="action-btn"><FaEye /></button>
-                  <button className="action-btn"><FaEdit /></button>
+                  <button className="action-btn">
+                    <IoIosPrint />
+                  </button>
+                  <button className="action-btn">
+                    <FaEye />
+                  </button>
+                  <button className="action-btn">
+                    <FaEdit />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="customer-pagination">
-          <span>Result Per page</span>
-          <select>
-            <option>10</option>
-          </select>
-          <button disabled={page === 1} onClick={() => setPage(page - 1)}>{'<'}</button>
-          {[1, 2, 3].map((p) => (
-            <button
-              key={p}
-              className={page === p ? "active" : ""}
-              onClick={() => setPage(p)}
-            >
-              {p.toString().padStart(2, "0")}
+          <div>
+            <span>Result Per page</span>
+
+            <select>
+              <option>10</option>
+            </select>
+          </div>
+          <div>
+            <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+              {"<"}
             </button>
-          ))}
-          <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>{'>'}</button>
+            {[1, 2, 3].map((p) => (
+              <button
+                key={p}
+                className={page === p ? "active" : ""}
+                onClick={() => setPage(p)}
+              >
+                {p.toString().padStart(2, "0")}
+              </button>
+            ))}
+            <button
+              disabled={page === totalPages}
+              onClick={() => setPage(page + 1)}
+            >
+              {">"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

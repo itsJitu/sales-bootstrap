@@ -71,15 +71,6 @@
   color: #222;
 }
 
-.customer-table tbody tr.selected-row {
-  background: #007aff;
-  color: #fff;
-}
-.customer-table tbody tr.selected-row td:first-child {
-  background: none;
-  color: #222;
-}
-
 .customer-table tbody tr:nth-child(even):not(.selected-row) {
   background: #f6f8fa;
 }
@@ -98,33 +89,31 @@
 .action-btn {
   background: none;
   border: none;
-  color: #007aff;
   font-size: 18px;
   margin-right: 8px;
-  cursor: pointer;
-  transition: color 0.2s;
 }
 
 .action-btn:last-child {
   margin-right: 0;
 }
 
-.action-btn:hover {
-  color: #0056b3;
-}
 
 .customer-pagination {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 0 0 0;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
 }
+
 
 .customer-pagination select {
   border: 1px solid #c7cad5;
   border-radius: 5px;
   padding: 4px 8px;
   font-size: 14px;
+  
 }
 
 .customer-pagination button {
