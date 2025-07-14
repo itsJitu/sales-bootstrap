@@ -1,0 +1,133 @@
+.main {
+  padding: 20px 30px;
+  background: #f9f9f9;
+}
+
+.genrate {
+  padding: 0px 12px;
+  margin-bottom: 20px;
+}
+
+.genrate p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.customer-details {
+  background-color: white;
+  margin: 20px 100px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 30px;
+  color: #555;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #007AFF;
+}
+
+.invoice-details {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.invoice-details span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.invoice-nos {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.inv-div {
+  width: 100%;
+  color: #555;
+}
+
+.inv-div span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.db-table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
+}
+
+.te {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tr-head {
+  border-radius: 10px;
+}
+
+.table-rose {
+  background-color: #007AFF;
+  color: white;
+  text-align: left;
+  border-top-right-radius: 10px;
+}
+
+.table-rose th {
+  padding: 15px 10px;
+  font-weight: 600;
+}
+
+.te tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.te tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.te tbody td {
+  padding: 12px 10px;
+  vertical-align: middle;
+}
+
+.te input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.te tbody td:first-child {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .customer-details {
+    margin: 20px 20px;
+    padding: 15px;
+  }
+  .invoice-nos {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

@@ -316,14 +316,12 @@ function SalesOrder() {
         {/* save & send */}
 
         <div className="button">
-          <Link to="/" className="save">
-            {" "}
+          <button className="save" onClick={() => { /* TODO: Save as Draft logic */ }}>
             Save as Draft
-          </Link>
-          <Link to="/Invoice" className="send">
-            {" "}
+          </button>
+          <button className="send" onClick={() => { /* TODO: Send logic */ }}>
             Send
-          </Link>
+          </button>
         </div>
       </div>
     </div>
