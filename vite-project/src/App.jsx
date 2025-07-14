@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Sales from './Components/Sales';
 import First from './Components/First';
 import SalesOrder from './Components/SalesOrder';
+import AllSales from './Components/AllSales';
 
 import './App.css'
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allSales",
-        element: <div>All Sales Page</div>
+        element: <AllSales />
       },
       {
         path: "/customer",

@@ -1,0 +1,208 @@
+.sale {
+  padding: 20px;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar p {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+}
+
+.pluse-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #007aff;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pluse-icon:hover {
+  background-color: #0056b3;
+}
+
+.cost {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.name, .days {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+
+.name {
+  flex: 2;
+}
+
+.days {
+  flex: 1;
+}
+
+.table-container {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.sales-table th {
+  background-color: #007aff;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sales-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.sales-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status.completed {
+  color: #22c55e;
+  background: none;
+  font-weight: 500;
+}
+.status.rejected {
+  color: #ef4444;
+  background: none;
+  font-weight: 500;
+}
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.status.default {
+  background-color: #e2e3e5;
+  color: #6c757d;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  background: none;
+  color: inherit;
+}
+
+.action-btn.view,
+.action-btn.edit,
+.action-btn.print {
+  background: none;
+  color: inherit;
+}
+
+.action-btn svg {
+  color: #6b7280; /* subtle gray, or remove this line for default */
+}
+
+.action-btn:hover {
+  background: #f3f4f6;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.page-btn {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  color: #222;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.page-btn.active {
+  background-color: #007aff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f3f4f6;
+  color: #bbb;
+}
+
+.page-btn:disabled:hover {
+  background-color: white;
+}
+
+.sales-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.sales-table th:last-child {
+  border-top-right-radius: 8px;
+}
+  

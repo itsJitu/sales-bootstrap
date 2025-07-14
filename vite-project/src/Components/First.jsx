@@ -66,11 +66,11 @@ function First() {
 
                 <li
                   className={
-                    activeItem === "return"
+                    activeItem === "quotation"
                       ? "dropdown-item active"
                       : "dropdown-item"
                   }
-                  onClick={() => handleItemClick("return")}
+                  onClick={() => handleItemClick("quotation")}
                 >
                   <Link to="/quotation" className="link">
                     Quotations
@@ -79,11 +79,11 @@ function First() {
 
                  <li
                   className={
-                    activeItem === "return"
+                    activeItem === "salesReport"
                       ? "dropdown-item active"
                       : "dropdown-item"
                   }
-                  onClick={() => handleItemClick("return")}
+                  onClick={() => handleItemClick("salesReport")}
                 >
                   <Link to="/salesReport" className="link">
                     Sales Report

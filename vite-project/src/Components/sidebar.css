@@ -50,8 +50,13 @@
 }
 
 .dropdown-item.active .link {
-  color: black;
-  font-weight:lighter;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+.dropdown-item.active {
+  background: none !important;
+  background-color: transparent !important;
 }
 
 .link {
