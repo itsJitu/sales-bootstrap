@@ -5,6 +5,7 @@ import Sales from './Components/Sales';
 import First from './Components/First';
 import SalesOrder from './Components/SalesOrder';
 import AllSales from './Components/AllSales';
+import Quotations from './Components/Quotations';
 
 import './App.css'
 
@@ -31,19 +32,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/customer",
-        element: <div>Customer Page</div>
+        element: <Customer />
       },
       {
         path: "/quotation",
-        element: <div>Quotations Page</div>
+        element: <Quotations />
       },
       {
         path: "/salesReport",
-        element: <div>Sales Report Page</div>
+        element: <SalesReport />
       },
       {
         path: "/invoiceBills",
-        element: <div>Invoices & Bills Page</div>
+        element: <InvoicesBills />
       }
     ]
   }
