@@ -1,120 +1,162 @@
 import React, { useState } from "react";
 import "./Customer.css";
+import { FaEye, FaEdit } from "react-icons/fa";
+import { IoIosPrint } from "react-icons/io";
+
+const mockCustomers = [
+  {
+    id: 1,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "--",
+    total: "2292",
+    due: "--",
+  },
+  {
+    id: 2,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "customer01@gmail.com",
+    total: "2292",
+    due: "--",
+  },
+  {
+    id: 3,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "--",
+    total: "2292",
+    due: "987",
+  },
+  {
+    id: 4,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "--",
+    total: "2292",
+    due: "--",
+  },
+  {
+    id: 5,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "customer05@gmail.com",
+    total: "2292",
+    due: "22",
+  },
+  {
+    id: 6,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "--",
+    total: "2292",
+    due: "--",
+  },
+  {
+    id: 7,
+    name: "Customer 01",
+    sku: "SKU",
+    phone: "98765 43210",
+    email: "--",
+    total: "2292",
+    due: "--",
+  },
+];
 
 function Customer() {
-  const [produtsData] = useState([
-    {
-      id: 1,
-      CustomerName: "Laptop",
-      PhoneNo: 620583345,
-      EmialId: "diwakarKumar0215@gmail.com",
-      ToatalAmount: 1200,
-      DueAmount:200,
-    },
-    {
-      id: 1,
-      CustomerName: "Laptop",
-      PhoneNo: 620583345,
-      EmialId: "diwakarKumar0215@gmail.com",
-      ToatalAmount: 1200,
-      DueAmount:200,
-    }
-  ]);
+  const [search, setSearch] = useState("");
+  const [dateFilter, setDateFilter] = useState("Last 7 Days");
+  const [statusFilter, setStatusFilter] = useState("Completed");
+  const [page, setPage] = useState(1);
 
-  const [costumerData] = useState([
-    { id: 1, customerFullName: "Jitu Roy" },
-    { id: 2, customerFullName: "Jane Smith" },
-    { id: 3, customerFullName: "Bob Johnson" }
-  ]);
-  const [customerName, setCustomerName] = useState("");
-
-  const [salesPersonData] = useState([
-    { id: 1, salesMan: "Alice Brown" },
-    { id: 2, salesMan: "Charlie Wilson" },
-    { id: 3, salesMan: "Diana Davis" }
-  ]);
-  const [salesPerson, setsalesPerson] = useState("");
-  const [PayMethod, setPayMethod] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [dateFilter, setDateFilter] = useState('Last 7 Days');
-  const [statusFilter, setStatusFilter] = useState('Completed');
-
-  // Filter customers by search term
-  const filteredCustomers = produtsData.filter((customer) => {
-    const term = searchTerm.toLowerCase();
-    return (
-      customer.CustomerName.toLowerCase().includes(term) ||
-      String(customer.PhoneNo).includes(term) ||
-      customer.EmialId.toLowerCase().includes(term)
-    );
-  });
-
-  // Remove old subtotal, total, tax, and totaldiscount calculations since they don't apply to the new data structure
+  // Pagination logic
+  const itemsPerPage = 7;
+  const totalPages = 3;
+  const paginated = mockCustomers.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
-    <div className="main">
-      <div className="genrate">
-        <p>Customer List</p>
+    <div className="customer-main">
+      <div className="customer-header">
+        <span>Customer Lists</span>
+        <button className="create-order-btn">
+          <span style={{ fontSize: 18, fontWeight: "bold", marginRight: 6 }}>+</span>
+          Create Order
+        </button>
       </div>
-      <div className="customer-details">
-        {/* Filters */}
-        <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
-          <input
-            type="search"
-            placeholder="Search customers..."
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-            className="search-bar"
-            style={{ flex: 2, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
-          />
-          <select
-            className="days"
-            value={dateFilter}
-            onChange={e => setDateFilter(e.target.value)}
-            style={{ flex: 1, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
-          >
-            <option>Last 7 Days</option>
-            <option>Last 30 Days</option>
-            <option>Last 90 Days</option>
-          </select>
-          <select
-            className="days"
-            value={statusFilter}
-            onChange={e => setStatusFilter(e.target.value)}
-            style={{ flex: 1, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
-          >
-            <option>Completed</option>
-            <option>Pending</option>
-            <option>All Status</option>
-          </select>
-        </div>
-        <div className="table-container">
-          <table className="sales-table">
-            <thead>
-              <tr>
-                <th style={{ padding: "10px 30px", borderTopLeftRadius: "10px" }}>
-                  Customer Name
-                </th>
-                <th>Phone No.</th>
-                <th>Email id</th>
-                <th>Total Amount</th>
-                <th>Due Amount</th>
-                <th style={{ borderTopRightRadius: "10px" }}>Total Amount</th>
+      <div className="customer-filters">
+        <select className="customer-select">
+          <option>Aman Kumar - Rajendra Chowk</option>
+        </select>
+        <select className="customer-days" value={dateFilter} onChange={e => setDateFilter(e.target.value)}>
+          <option>Last 7 Days</option>
+          <option>Last 30 Days</option>
+          <option>Last 90 Days</option>
+        </select>
+        <select className="customer-status" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
+          <option>Completed</option>
+          <option>Pending</option>
+          <option>All Status</option>
+        </select>
+      </div>
+      <div className="customer-table-container">
+        <table className="customer-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Customer name</th>
+              <th>Phone No.</th>
+              <th>Email id</th>
+              <th>Total Amount</th>
+              <th>Due Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paginated.map((c, idx) => (
+              <tr key={c.id} className={idx === 0 ? "selected-row" : ""}>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>
+                  <span className="customer-link">{c.name}</span>
+                  <br />
+                  <span className="customer-sku">({c.sku})</span>
+                </td>
+                <td>{c.phone}</td>
+                <td>{c.email}</td>
+                <td>$ {c.total}/-</td>
+                <td>{c.due === "--" ? "--" : `$ ${c.due}/-`}</td>
+                <td>
+                  <button className="action-btn"><IoIosPrint /></button>
+                  <button className="action-btn"><FaEye /></button>
+                  <button className="action-btn"><FaEdit /></button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {filteredCustomers.map((customer) => (
-                <tr key={customer.id} style={{ borderBottom: "1px solid gray" }}>
-                  <td>{customer.CustomerName}</td>
-                  <td>{customer.PhoneNo}</td>
-                  <td>{customer.EmialId}</td>
-                  <td>${customer.ToatalAmount}</td>
-                  <td>${customer.DueAmount}</td>
-                  <td>${customer.ToatalAmount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
+        <div className="customer-pagination">
+          <span>Result Per page</span>
+          <select>
+            <option>10</option>
+          </select>
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>{'<'}</button>
+          {[1, 2, 3].map((p) => (
+            <button
+              key={p}
+              className={page === p ? "active" : ""}
+              onClick={() => setPage(p)}
+            >
+              {p.toString().padStart(2, "0")}
+            </button>
+          ))}
+          <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>{'>'}</button>
         </div>
       </div>
     </div>
