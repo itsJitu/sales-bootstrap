@@ -20,7 +20,7 @@ function Sales() {
       payAmout: 1200,
       dueAmount: 0,
       status: "Completed",
-      invoiceDueDate: "2024-01-30"
+      invoiceDueDate: "2024-01-30",
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ function Sales() {
       payAmout: 25,
       dueAmount: 5,
       status: "Pending",
-      invoiceDueDate: "2024-01-31"
+      invoiceDueDate: "2024-01-31",
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ function Sales() {
       payAmout: 80,
       dueAmount: 0,
       status: "Completed",
-      invoiceDueDate: "2024-02-01"
+      invoiceDueDate: "2024-02-01",
     },
     {
       id: 4,
@@ -53,14 +53,14 @@ function Sales() {
       payAmout: 300,
       dueAmount: 50,
       status: "Pending",
-      invoiceDueDate: "2024-02-02"
-    }
+      invoiceDueDate: "2024-02-02",
+    },
   ]);
-  
+
   const [costumerData] = useState([
     { id: 1, customerFullName: "John Doe", CustomerAddress: "123 Main St" },
     { id: 2, customerFullName: "Jane Smith", CustomerAddress: "456 Oak Ave" },
-    { id: 3, customerFullName: "Bob Johnson", CustomerAddress: "789 Pine Rd" }
+    { id: 3, customerFullName: "Bob Johnson", CustomerAddress: "789 Pine Rd" },
   ]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -134,7 +134,7 @@ function Sales() {
           </thead>
           <tbody>
             {currentItems.map((invoice) => (
-              <tr key={invoice.id}>
+              <tr key={invoice.id} style={{backgroundColor: "white"}}>
                 <td>{invoice.invoiceno}</td>
                 <td>{invoice.productName}</td>
                 <td>{invoice.customerName}</td>
@@ -164,35 +164,39 @@ function Sales() {
             ))}
           </tbody>
         </table>
-      </div>
-
-      {/* Pagination */}
-      <div className="pagination">
-        <button 
-          className="page-btn" 
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <IoIosArrowBack />
-        </button>
-        
-        {Array.from({ length: totalPages }, (_, index) => (
+        {/* Pagination inside table-container */}
+        <div className="pagination">
+          <div>
+            <span>result Per Page</span>
+          </div>
           <button
-            key={index + 1}
-            className={`page-btn ${currentPage === index + 1 ? 'active' : ''}`}
-            onClick={() => setCurrentPage(index + 1)}
+            className="page-btn"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
           >
-            {index + 1}
+            <IoIosArrowBack style={{color: "#007AFF"}}/>
           </button>
-        ))}
-        
-        <button 
-          className="page-btn" 
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <MdArrowForwardIos />
-        </button>
+
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              className={`page-btn ${
+                currentPage === index + 1 ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            className="page-btn"
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <MdArrowForwardIos style={{color: "#007AFF"}}/>
+          </button>
+        </div>
       </div>
     </div>
   );

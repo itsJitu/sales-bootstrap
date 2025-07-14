@@ -1,6 +1,5 @@
 .sale {
   padding: 20px;
-  background-color: #f5f6fa;
   min-height: 100vh;
 }
 
@@ -8,11 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  background: white;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2px;
 }
 
 .navbar p {
@@ -36,8 +31,6 @@
   padding: 10px 16px;
   border-radius: 6px;
   font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 .pluse-icon:hover {
   background-color: #0056b3;
@@ -71,7 +64,6 @@
 
 .table-container {
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -110,17 +102,17 @@
 
 .status.completed {
   color: #22c55e;
-  background: none;
+  background: rgb(204, 222, 204);
   font-weight: 500;
 }
 .status.rejected {
   color: #ef4444;
-  background: none;
+  background: rgb(242, 119, 119);
   font-weight: 500;
 }
 .status.pending {
   background-color: #fff3cd;
-  color: #856404;
+  color: rgb(178, 178, 9);
 }
 .status.default {
   background-color: #e2e3e5;
@@ -150,52 +142,39 @@
   color: inherit;
 }
 
-.action-btn svg {
-  color: #6b7280; /* subtle gray, or remove this line for default */
-}
-
-.action-btn:hover {
-  background: #f3f4f6;
-}
-
 .pagination {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
   padding: 0;
-  background: none;
-  box-shadow: none;
+  margin-top: 10px;
 }
 
 .page-btn {
   margin: 0 5px;
-  padding: 6px 12px;
-  border: 1px solid #e5e7eb;
-  background-color: #fff;
+  background-color: transparent;
   color: #222;
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.3s;
+  border: none; 
 }
+
+.arrow-btn {
+  padding: 4px;         /* 🔹 Less padding for icon-only buttons */
+  width: 32px;          /* Optional: set fixed size */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .page-btn.active {
   background-color: #007aff;
   color: #fff;
   font-weight: bold;
-  border: none;
-}
-
-.page-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background: #f3f4f6;
-  color: #bbb;
-}
-
-.page-btn:disabled:hover {
-  background-color: white;
 }
 
 .sales-table th:first-child {
