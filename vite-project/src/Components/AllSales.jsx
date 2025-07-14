@@ -64,7 +64,7 @@ function Sales() {
   ]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -164,38 +164,33 @@ function Sales() {
             ))}
           </tbody>
         </table>
-        {/* Pagination inside table-container */}
-        <div className="pagination">
+        {/* Pagination and result per page */}
+        <div className="customer-pagination">
           <div>
-            <span>result Per Page</span>
+            <span>Result Per page</span>
+            <select value={itemsPerPage} onChange={e => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
           </div>
-          <button
-            className="page-btn"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <IoIosArrowBack style={{color: "#007AFF"}}/>
-          </button>
-
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              className={`page-btn ${
-                currentPage === index + 1 ? "active" : ""
-              }`}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
+          <div>
+            <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
+              {'<'}
             </button>
-          ))}
-
-          <button
-            className="page-btn"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <MdArrowForwardIos style={{color: "#007AFF"}}/>
-          </button>
+            {Array.from({ length: totalPages }, (_, idx) => (
+              <button
+                key={idx + 1}
+                className={currentPage === idx + 1 ? 'active' : ''}
+                onClick={() => setCurrentPage(idx + 1)}
+              >
+                {(idx + 1).toString().padStart(2, '0')}
+              </button>
+            ))}
+            <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>
+              {'>'}
+            </button>
+          </div>
         </div>
       </div>
     </div>
