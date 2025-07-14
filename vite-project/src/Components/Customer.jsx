@@ -5,21 +5,19 @@ function Customer() {
   const [produtsData] = useState([
     {
       id: 1,
-      products: "Laptop",
-      title: "Dell XPS 13",
-      quantity: 2,
-      price: 1200,
-      tax: 60,
-      discount: 50
+      CustomerName: "Laptop",
+      PhoneNo: 620583345,
+      EmialId: "diwakarKumar0215@gmail.com",
+      ToatalAmount: 1200,
+      DueAmount:200,
     },
     {
-      id: 2,
-      products: "Mouse",
-      title: "Wireless Mouse",
-      quantity: 5,
-      price: 25,
-      tax: 2.5,
-      discount: 5
+      id: 1,
+      CustomerName: "Laptop",
+      PhoneNo: 620583345,
+      EmialId: "diwakarKumar0215@gmail.com",
+      ToatalAmount: 1200,
+      DueAmount:200,
     }
   ]);
 
@@ -37,227 +35,86 @@ function Customer() {
   ]);
   const [salesPerson, setsalesPerson] = useState("");
   const [PayMethod, setPayMethod] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dateFilter, setDateFilter] = useState('Last 7 Days');
+  const [statusFilter, setStatusFilter] = useState('Completed');
 
-  const subtotal = produtsData.reduce((sum, item) => {
-    const quantity = Number(item.quantity) || 0;
-    const price = Number(item.price) || 0;
-    const itemTotal = quantity * price;
-    return sum + itemTotal;
-  }, 0);
+  // Filter customers by search term
+  const filteredCustomers = produtsData.filter((customer) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      customer.CustomerName.toLowerCase().includes(term) ||
+      String(customer.PhoneNo).includes(term) ||
+      customer.EmialId.toLowerCase().includes(term)
+    );
+  });
 
-  const total = produtsData.reduce((sum, item) => {
-    const quantity = Number(item.quantity) || 0;
-    const price = Number(item.price) || 0;
-    const tax = Number(item.tax) || 0;
-    const discount = Number(item.discount) || 0;
-    const itemTotal = quantity * price + quantity * tax - quantity * discount;
-    return sum + itemTotal;
-  }, 0);
-
-  const tax = produtsData.reduce((sum, item) => {
-    const quantity = Number(item.quantity) || 0;
-    const tax = Number(item.tax) || 0;
-    const totaltax = quantity * tax;
-    return sum + totaltax;
-  }, 0);
-
-  const totaldiscount = produtsData.reduce((sum, item) => {
-    const quantity = Number(item.quantity) || 0;
-    const discount = Number(item.discount) || 0;
-    const totaldis = quantity * discount;
-    return sum + totaldis;
-  }, 0);
+  // Remove old subtotal, total, tax, and totaldiscount calculations since they don't apply to the new data structure
 
   return (
     <div className="main">
       <div className="genrate">
-        <p>Create Sales Order</p>
+        <p>Customer List</p>
       </div>
-      {/* Quotations section */}
       <div className="customer-details">
-        <div className="invoice-nos">
-          {/* Select customer */}
-          <div className="inv-div">
-            <span>Select Customer </span>
-            <select
-              className="select"
-              value={customerName}
-              onChange={(e) => setCustomerName(e.target.value)}
-            >
-              {costumerData.map((costumer) => (
-                <option key={costumer.id} value={costumer.customerFullName}>
-                  {costumer.customerFullName}
-                </option>
-              ))}
-            </select>
-          </div>
+        {/* Filters */}
+        <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
+          <input
+            type="search"
+            placeholder="Search customers..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className="search-bar"
+            style={{ flex: 2, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
+          />
+          <select
+            className="days"
+            value={dateFilter}
+            onChange={e => setDateFilter(e.target.value)}
+            style={{ flex: 1, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
+          >
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+          </select>
+          <select
+            className="days"
+            value={statusFilter}
+            onChange={e => setStatusFilter(e.target.value)}
+            style={{ flex: 1, padding: '8px 12px', borderRadius: 5, border: '1px solid #c7cad5', outline: 'none' }}
+          >
+            <option>Completed</option>
+            <option>Pending</option>
+            <option>All Status</option>
+          </select>
         </div>
-        <div className="invoice-details">
-          <span>Sales Details</span>
-        </div>
-        <div className="invoice-nos">
-          {/* salesman */}
-          <div className="inv-div">
-            <span>Salesman</span>
-            <select
-              className="select"
-              value={salesPerson}
-              onChange={(e) => setsalesPerson(e.target.value)}
-            >
-              {salesPersonData.map((salesman) => (
-                <option key={salesman.id} value={salesman.salesMan}>
-                  {salesman.salesMan}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* Sales Date*/}
-          <div className="inv-div">
-            <span>Sales Date</span>
-            <input
-              className="select"
-              type="date"
-            ></input>
-          </div>
-        </div>
-        {/* Add products */}
-        <div className="add-products">
-          <span> Add Products </span>
-        </div>
-        {/* products Details */}
-        <div className="db-table">
-          <table className="te">
-            <thead className="tr-head">
-              <tr className="table-rose">
+        <div className="table-container">
+          <table className="sales-table">
+            <thead>
+              <tr>
                 <th style={{ padding: "10px 30px", borderTopLeftRadius: "10px" }}>
-                  Product Name
+                  Customer Name
                 </th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Tax</th>
-                <th>Discount</th>
+                <th>Phone No.</th>
+                <th>Email id</th>
+                <th>Total Amount</th>
+                <th>Due Amount</th>
                 <th style={{ borderTopRightRadius: "10px" }}>Total Amount</th>
               </tr>
             </thead>
             <tbody>
-              {produtsData.map((supplier) => (
-                <tr key={supplier._id || supplier.id} style={{ borderBottom: "1px solid gray" }}>
-                  <td style={{ padding: "10px 20px", display: "flex" }}>
-                    <div style={{ display: "flex", alignItems: "center", padding: "5px" }}>
-                      <input type="checkbox" />
-                    </div>
-                    <div>
-                      <span style={{ color: "rgb(0, 122, 255)" }}>
-                        {supplier.products}
-                      </span>
-                      <br></br>
-                      <span style={{ color: "gray", fontSize: "15px" }}>
-                        ({supplier.title})
-                      </span>
-                    </div>
-                  </td>
-                  <td>{supplier.quantity} pcs</td>
-                  <td>${supplier.price}</td>
-                  <td>${supplier.tax}</td>
-                  <td>{supplier.discount}</td>
-                  <td>
-                    ${supplier.quantity * supplier.price + supplier.quantity * supplier.tax - supplier.quantity * supplier.discount}
-                  </td>
+              {filteredCustomers.map((customer) => (
+                <tr key={customer.id} style={{ borderBottom: "1px solid gray" }}>
+                  <td>{customer.CustomerName}</td>
+                  <td>{customer.PhoneNo}</td>
+                  <td>{customer.EmialId}</td>
+                  <td>${customer.ToatalAmount}</td>
+                  <td>${customer.DueAmount}</td>
+                  <td>${customer.ToatalAmount}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-        <p style={{ color: " rgb(24, 138, 169)" }}> + Add products</p>
-        {/* Bill details table */}
-        <div className="table-cont">
-          <table>
-            <thead className="bill-details">
-              {/*Sub Total */}
-              <tr>
-                <td className="subtotal" style={{ width: "10%", textAlign: "right" }}>
-                  Subtotal
-                </td>
-                <td className="amount" style={{ textAlign: "left" }}>
-                  {subtotal}
-                </td>
-              </tr>
-              {/* Total Discount */}
-              <tr>
-                <td className="subtotal" style={{ width: "10%", textAlign: "right" }}>
-                  Total Discount
-                </td>
-                <td className="amount" style={{ textAlign: "left" }}>
-                  {totaldiscount}
-                </td>
-              </tr>
-              {/* Total Tax */}
-              <tr>
-                <td className="subtotal" style={{ width: "10%", textAlign: "right" }}>
-                  Total tax
-                </td>
-                <td className="amount" style={{ textAlign: "left" }}>
-                  {tax}
-                </td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        {/* total table */}
-        <div className="total-cont">
-          <div className="total-amount">
-            <div>
-              <hr></hr>
-              <div className="total-dis">
-                <span>Total</span>
-                <span>{total}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
-        {/* payment & paid  */}
-        <div>
-          <div className="payment-info">
-            <span>payment info.</span>
-          </div>
-          <div className="invoice-nos">
-            <div className="inv-div">
-              <span>Payment Method</span>
-              <select
-                className="select"
-                value={PayMethod}
-                onChange={(e) => setPayMethod(e.target.value)}
-              >
-                <option value="" disabled>
-                  --Select Payment Method--
-                </option>
-                <option>Cash</option>
-                <option>Online-Payment</option>
-                <option>Credit-Card</option>
-                <option>Debit-Card</option>
-              </select>
-            </div>
-            <div className="inv-div">
-              <span>paid Amount</span>
-              <input className="select" type="text"></input>
-            </div>
-          </div>
-          <br></br>
-          <div className="inv-div">
-            <span>Due Amount</span>
-            <br></br>
-            <input className="select-due" type="text" />
-          </div>
-        </div>
-        <div className="genrate-checkbox">
-          <input type="checkbox" />
-          <span>Genrate Invoice</span>
-        </div>
-        {/* save & send */}
-        <div className="button">
-          <button className="save">Save as Draft</button>
-          <button className="send">Send</button>
         </div>
       </div>
     </div>
