@@ -303,7 +303,6 @@ function SalesOrder() {
           <br></br>
           <div className="inv-div">
             <span>Due Amount</span>
-            <br></br>
             <input className="select-due" type="text" />
           </div>
         </div>

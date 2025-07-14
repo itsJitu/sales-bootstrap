@@ -79,20 +79,6 @@ function First() {
 
                  <li
                   className={
-                    activeItem === "salesReport"
-                      ? "dropdown-item active"
-                      : "dropdown-item"
-                  }
-                  onClick={() => handleItemClick("salesReport")}
-                >
-                  <Link to="/salesReport" className="link">
-                    Sales Report
-                  </Link>
-                </li>
-
-
-                <li
-                  className={
                     activeItem === "financial"
                       ? "dropdown-item active"
                       : "dropdown-item"

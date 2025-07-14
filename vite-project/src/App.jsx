@@ -7,7 +7,6 @@ import SalesOrder from './Components/SalesOrder';
 import AllSales from './Components/AllSales';
 import Quotations from './Components/Quotations';
 import Customer from './Components/Customer';
-import SalesReport from './Components/Report';
 import InvoicesBills from './Components/InvoiceBills';
 
 import './App.css'
@@ -40,10 +39,6 @@ const router = createBrowserRouter([
       {
         path: "/quotation",
         element: <Quotations />
-      },
-      {
-        path: "/salesReport",
-        element: <SalesReport />
       },
       {
         path: "/invoiceBills",
